@@ -31,7 +31,7 @@ A simplified checkout flow built as part of the Ecoyaan Frontend Engineering Int
 ## Architectural Choices
 
 ### SSR Data Fetching
-`/app/cart/page.tsx` is a **Next.js Server Component** that fetches cart data from `/api/cart` at request time using `cache: "no-store"`. This demonstrates SSR best practices — data is fetched on the server before the page is sent to the browser.
+`/app/cart/page.tsx` is a **Next.js Server Component** that fetches cart data from `/api/cart` at request time using `cache: "no-store"`. This demonstrates SSR best practices data is fetched on the server before the page is sent to the browser.
 
 ### Mock API
 `/app/api/cart/route.ts` is a Next.js Route Handler that returns the mock cart JSON with a simulated network delay.
@@ -55,8 +55,8 @@ src/
 ├── app/
 │   ├── api/cart/route.ts     # Mock API endpoint (SSR data source)
 │   ├── cart/
-│   │   ├── page.tsx          # Server Component — SSR data fetching
-│   │   └── CartClient.tsx    # Client Component — renders cart UI
+│   │   ├── page.tsx          # Server Component SSR data fetching
+│   │   └── CartClient.tsx    # Client Component renders cart UI
 │   ├── shipping/page.tsx     # Shipping address form
 │   ├── payment/page.tsx      # Order review + payment
 │   ├── success/page.tsx      # Order success screen
@@ -74,7 +74,7 @@ src/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/ecoyaan-checkout.git
+git clone https://github.com/Sumeet-Y1/ecoyaan-checkout.git
 
 # 2. Navigate into the project
 cd ecoyaan-checkout
