@@ -98,4 +98,4 @@ No environment variables required for local development.
 Deployed on **Vercel**. To deploy your own:
 1. Push the repo to GitHub
 2. Import the project at [vercel.com](https://vercel.com)
-3. Click Deploy — no configuration needed
+3. Click Deploy no configuration needed
