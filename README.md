@@ -22,9 +22,9 @@ A simplified checkout flow built as part of the Ecoyaan Frontend Engineering Int
 
 ## Features
 
-- **Cart Screen** — Lists products with image, name, price and quantity. Shows subtotal, shipping fee and grand total with a "Proceed to Checkout" button.
-- **Shipping Address Screen** — Form with Full Name, Email, Phone Number, PIN Code, City and State. Includes validation for email format, 10-digit phone number, 6-digit PIN code and required fields.
-- **Payment / Confirmation Screen** — Displays final order summary and entered shipping address. Simulated "Pay Securely" button with a loading state that leads to an Order Successful page.
+- **Cart Screen** - Lists products with image, name, price and quantity. Shows subtotal, shipping fee and grand total with a "Proceed to Checkout" button.
+- **Shipping Address Screen** - Form with Full Name, Email, Phone Number, PIN Code, City and State. Includes validation for email format, 10-digit phone number, 6-digit PIN code and required fields.
+- **Payment / Confirmation Screen** - Displays final order summary and entered shipping address. Simulated "Pay Securely" button with a loading state that leads to an Order Successful page.
 
 ---
 
