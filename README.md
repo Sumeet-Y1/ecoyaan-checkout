@@ -1,49 +1,50 @@
 # Ecoyaan Checkout Flow
 
-A full checkout flow built with **Next.js 14 App Router**, **TypeScript**, **Tailwind CSS**, and **React Context API** — developed as part of the Ecoyaan Frontend Engineering Interview Assignment.
-
----
+A simplified checkout flow built as part of the Ecoyaan Frontend Engineering Interview Assignment.
 
 ## Live Demo
 
-> Deploy to Vercel: push this repo and connect at [vercel.com](https://vercel.com)
+🔗 [Live on Vercel](#) <!-- Replace with your Vercel URL -->
 
 ---
 
 ## Tech Stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| Framework | Next.js 14 (App Router) | SSR via Server Components, file-based routing |
-| Language | TypeScript | Type safety across the whole flow |
-| Styling | Tailwind CSS + custom CSS | Utility-first with a custom eco design system |
-| State | React Context API | Lightweight, sufficient for a 3-step form flow |
-| Fonts | Playfair Display + DM Sans | Distinctive eco-premium look |
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| State Management | React Context API |
+| Fonts | Playfair Display + DM Sans |
 
 ---
 
-## Architecture
+## Features
+
+- **Cart Screen** — Lists products with image, name, price and quantity. Shows subtotal, shipping fee and grand total with a "Proceed to Checkout" button.
+- **Shipping Address Screen** — Form with Full Name, Email, Phone Number, PIN Code, City and State. Includes validation for email format, 10-digit phone number, 6-digit PIN code and required fields.
+- **Payment / Confirmation Screen** — Displays final order summary and entered shipping address. Simulated "Pay Securely" button with a loading state that leads to an Order Successful page.
+
+---
+
+## Architectural Choices
 
 ### SSR Data Fetching
-`/app/cart/page.tsx` is a **Server Component** that fetches cart data from `/api/cart` at request time using `cache: "no-store"`. This data is passed as props to the client component (`CartClient.tsx`), which hydrates the shared Context.
-
-### State Management
-`CheckoutContext` (Context API) maintains:
-- `cartData` — items, shipping fee, discount
-- `shippingAddress` — user-entered address
-- `orderPlaced` — flag for the success page guard
-
-Data flows: Cart → (context hydration) → Shipping → (form submit to context) → Payment → Success
+`/app/cart/page.tsx` is a **Next.js Server Component** that fetches cart data from `/api/cart` at request time using `cache: "no-store"`. This demonstrates SSR best practices — data is fetched on the server before the page is sent to the browser.
 
 ### Mock API
-`/api/cart/route.ts` is a Next.js Route Handler that returns the mock JSON data with a simulated 100ms delay to mimic a real network call.
+`/app/api/cart/route.ts` is a Next.js Route Handler that returns the mock cart JSON with a simulated network delay.
+
+### State Management
+`CheckoutContext` (React Context API) maintains cart data and shipping address across all steps. Data flows from Cart → Shipping → Payment → Success without prop drilling.
 
 ### Form Validation
-Shipping form uses:
-- Inline validation on blur per field
-- Full validation on submit
-- Regex checks: valid email format, 10-digit phone, 6-digit PIN code
-- All fields required
+Shipping form validates on blur per field and on submit:
+- Required fields check
+- Valid email format (regex)
+- 10-digit Indian phone number (supports +91 prefix)
+- 6-digit PIN code
 
 ---
 
@@ -52,14 +53,14 @@ Shipping form uses:
 ```
 src/
 ├── app/
-│   ├── api/cart/route.ts     # Mock API endpoint
+│   ├── api/cart/route.ts     # Mock API endpoint (SSR data source)
 │   ├── cart/
-│   │   ├── page.tsx          # Server Component (SSR)
-│   │   └── CartClient.tsx    # Client Component
-│   ├── shipping/page.tsx     # Shipping form
-│   ├── payment/page.tsx      # Review + Pay
-│   ├── success/page.tsx      # Order success
-│   ├── layout.tsx            # Root layout (wraps with Context)
+│   │   ├── page.tsx          # Server Component — SSR data fetching
+│   │   └── CartClient.tsx    # Client Component — renders cart UI
+│   ├── shipping/page.tsx     # Shipping address form
+│   ├── payment/page.tsx      # Order review + payment
+│   ├── success/page.tsx      # Order success screen
+│   ├── layout.tsx            # Root layout with Context Provider
 │   └── globals.css           # Tailwind + custom design tokens
 ├── components/
 │   └── Stepper.tsx           # Step progress indicator
@@ -72,23 +73,29 @@ src/
 ## Running Locally
 
 ```bash
-# 1. Install dependencies
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/ecoyaan-checkout.git
+
+# 2. Navigate into the project
+cd ecoyaan-checkout
+
+# 3. Install dependencies
 npm install
 
-# 2. Start dev server
+# 4. Start the dev server
 npm run dev
 
-# 3. Open http://localhost:3000
+# 5. Open in browser
+http://localhost:3000
 ```
 
-No environment variables are needed for local development. For Vercel deployment, the app auto-detects `VERCEL_URL`.
+No environment variables required for local development.
 
 ---
 
-## Design Decisions
+## Deployment
 
-- **Eco theme** — Forest greens, earth tones, cream backgrounds. Custom CSS design tokens (`--leaf`, `--earth`, `--cream`) keep colors consistent.
-- **Sticky order summary** on cart page for easy reference while scrolling.
-- **Page guard on payment & success** — if context is lost (page refresh), the user is redirected to cart rather than seeing a broken state.
-- **Simulated payment delay** with a spinner for realistic UX feedback.
-- **Mobile-first responsive layout** — stacks vertically on small screens, side-by-side on desktop.
+Deployed on **Vercel**. To deploy your own:
+1. Push the repo to GitHub
+2. Import the project at [vercel.com](https://vercel.com)
+3. Click Deploy — no configuration needed
