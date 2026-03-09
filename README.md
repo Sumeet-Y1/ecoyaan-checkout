@@ -4,7 +4,7 @@ A simplified checkout flow built as part of the Ecoyaan Frontend Engineering Int
 
 ## Live Demo
 
-🔗 [Live on Vercel](#) <!-- Replace with your Vercel URL -->
+🔗 [Live on Vercel](https://ecoyaan-checkout-three.vercel.app/cart) 
 
 ---
 
