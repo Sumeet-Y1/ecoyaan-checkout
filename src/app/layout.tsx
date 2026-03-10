@@ -18,7 +18,7 @@ export default function RootLayout({
         <CheckoutProvider>
           {/* Navbar */}
           <header className="bg-white border-b border-[#f2e9d8] sticky top-0 z-50">
-            <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
               <a href="/" className="flex items-center gap-2">
                 <span className="text-2xl">🌿</span>
                 <span className="font-heading text-xl font-bold text-[#2d672d]">
@@ -30,7 +30,7 @@ export default function RootLayout({
               </span>
             </div>
           </header>
-          <main className="max-w-4xl mx-auto px-4 py-8">{children}</main>
+          <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
           <footer className="text-center py-8 text-sm text-[#9a6133] mt-8">
             🌍 Every purchase plants a better future
           </footer>
